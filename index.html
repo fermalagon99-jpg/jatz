@@ -9,9 +9,6 @@
     :root{
       --bg-1:#030511;
       --bg-2:#071126;
-      --pink:#ff87b7;
-      --rose:#ff4f86;
-      --tulip:#ff9ec4;
       --gold:#ffe9a8;
       --leaf:#17a260;
       --leaf-dark:#087044;
@@ -101,8 +98,8 @@
       text-transform:lowercase;
       color:#fff8fb;
       text-shadow:
-        0 0 12px rgba(255,133,183,.65),
-        0 0 34px rgba(255,79,134,.25);
+        0 0 12px rgba(255,219,92,.45),
+        0 0 34px rgba(255,69,69,.18);
     }
 
     .subtitle{
@@ -168,51 +165,6 @@
       to{ filter:brightness(1.15); }
     }
 
-    .heart{
-      position:absolute;
-      left:var(--x);
-      bottom:-45px;
-      z-index:12;
-      width:var(--s);
-      height:var(--s);
-      opacity:0;
-      animation:floatHeart var(--t) var(--delay) linear infinite;
-      filter:drop-shadow(0 0 7px rgba(255,99,148,.42));
-    }
-
-    .heart::before,
-    .heart::after{
-      content:"";
-      position:absolute;
-      width:55%;
-      height:85%;
-      left:50%;
-      top:3%;
-      border-radius:55% 55% 35% 35%;
-      background:linear-gradient(145deg, #ff9fc1, #ff4f86);
-      transform-origin:0 100%;
-      transform:rotate(-45deg);
-    }
-
-    .heart::after{
-      left:-5%;
-      transform-origin:100% 100%;
-      transform:rotate(45deg);
-    }
-
-    @keyframes floatHeart{
-      0%{
-        opacity:0;
-        transform:translate3d(0,0,0) rotate(0deg) scale(.6);
-      }
-      10%{ opacity:.8; }
-      75%{ opacity:.68; }
-      100%{
-        opacity:0;
-        transform:translate3d(var(--drift), -115vh, 0) rotate(32deg) scale(1.15);
-      }
-    }
-
     .spark{
       position:absolute;
       left:var(--x);
@@ -269,8 +221,8 @@
     .replay:hover,
     .replay:active{
       color:#fff;
-      border-color:rgba(255,135,183,.6);
-      background:rgba(255,79,134,.18);
+      border-color:rgba(255,210,90,.6);
+      background:rgba(255,77,77,.18);
     }
 
     @media (max-width:600px){
@@ -298,10 +250,9 @@
   </style>
 </head>
 <body>
-  <main class="scene" id="scene" aria-label="Jardín animado con tulipanes y rosas">
+  <main class="scene" id="scene" aria-label="Jardín animado con tulipanes amarillos y rosas rojas">
     <div class="title-wrap">
       <h1>sonríe jath</h1>
-      <div class="subtitle">un detalle para ti</div>
     </div>
 
     <div class="ground-glow"></div>
@@ -317,9 +268,9 @@
               <stop offset="1" stop-color="#075b39"/>
             </linearGradient>
             <linearGradient id="tulip1" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#ffc0d7"/>
-              <stop offset=".58" stop-color="#ff7aaa"/>
-              <stop offset="1" stop-color="#e83c77"/>
+              <stop offset="0" stop-color="#fff6b3"/>
+              <stop offset=".58" stop-color="#ffd95a"/>
+              <stop offset="1" stop-color="#f4b400"/>
             </linearGradient>
           </defs>
           <path d="M79 400 C74 312,76 220,83 120" fill="none" stroke="url(#stem1)" stroke-width="10" stroke-linecap="round"/>
@@ -327,8 +278,8 @@
           <path class="leaf" d="M81 264 C114 225,135 210,145 174 C109 182,86 211,80 253Z" fill="#16a860"/>
           <g transform="translate(82 88)">
             <path d="M0 38 C-44 28,-54 -10,-32 -28 C-14 -42,-2 -18,0 -5 C6 -24,22 -43,37 -27 C58 -5,42 30,0 38Z" fill="url(#tulip1)"/>
-            <path d="M0 38 C-19 20,-23 -9,0 -36 C22 -8,19 20,0 38Z" fill="#ff93ba" opacity=".88"/>
-            <ellipse cx="0" cy="30" rx="27" ry="11" fill="#e83870" opacity=".28"/>
+            <path d="M0 38 C-19 20,-23 -9,0 -36 C22 -8,19 20,0 38Z" fill="#ffe27c" opacity=".88"/>
+            <ellipse cx="0" cy="30" rx="27" ry="11" fill="#e0a000" opacity=".28"/>
           </g>
         </svg>
       </div>
@@ -343,9 +294,9 @@
               <stop offset="1" stop-color="#06492f"/>
             </linearGradient>
             <radialGradient id="rose1" cx="48%" cy="40%">
-              <stop offset="0" stop-color="#ffd2e1"/>
-              <stop offset=".45" stop-color="#ff8fb5"/>
-              <stop offset="1" stop-color="#ed3e78"/>
+              <stop offset="0" stop-color="#ffd8d8"/>
+              <stop offset=".45" stop-color="#ff5a5a"/>
+              <stop offset="1" stop-color="#c80d0d"/>
             </radialGradient>
           </defs>
           <path d="M86 447 C83 336,83 235,88 108" fill="none" stroke="url(#stem2)" stroke-width="10" stroke-linecap="round"/>
@@ -353,10 +304,10 @@
           <path class="leaf" d="M87 298 C122 267,139 243,146 210 C111 218,92 245,86 281Z" fill="#16a860"/>
           <g transform="translate(88 89)">
             <circle r="54" fill="url(#rose1)" opacity=".96"/>
-            <path d="M-42 6 C-52 -27,-15 -54,7 -32 C28 -54,58 -20,39 6 C59 26,28 57,3 38 C-21 60,-54 30,-42 6Z" fill="#ff80aa"/>
-            <path d="M-28 2 C-34 -20,-8 -36,7 -22 C22 -37,42 -15,30 4 C42 20,18 39,2 28 C-13 41,-38 20,-28 2Z" fill="#ffb4ce"/>
-            <path d="M-13 1 C-15 -12,1 -20,10 -10 C22 -2,12 15,1 17 C-10 14,-19 9,-13 1Z" fill="#f34f83"/>
-            <circle cx="3" cy="1" r="7" fill="#ffe0ea"/>
+            <path d="M-42 6 C-52 -27,-15 -54,7 -32 C28 -54,58 -20,39 6 C59 26,28 57,3 38 C-21 60,-54 30,-42 6Z" fill="#ef2f2f"/>
+            <path d="M-28 2 C-34 -20,-8 -36,7 -22 C22 -37,42 -15,30 4 C42 20,18 39,2 28 C-13 41,-38 20,-28 2Z" fill="#ff8080"/>
+            <path d="M-13 1 C-15 -12,1 -20,10 -10 C22 -2,12 15,1 17 C-10 14,-19 9,-13 1Z" fill="#b30000"/>
+            <circle cx="3" cy="1" r="7" fill="#ffe6e6"/>
           </g>
         </svg>
       </div>
@@ -371,9 +322,9 @@
               <stop offset="1" stop-color="#075637"/>
             </linearGradient>
             <linearGradient id="tulip3" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#ffe1ec"/>
-              <stop offset=".55" stop-color="#ff93bd"/>
-              <stop offset="1" stop-color="#ee4d83"/>
+              <stop offset="0" stop-color="#fff9c8"/>
+              <stop offset=".55" stop-color="#ffe16e"/>
+              <stop offset="1" stop-color="#f4bc1c"/>
             </linearGradient>
           </defs>
           <path d="M95 530 C92 402,93 275,95 128" fill="none" stroke="url(#stem3)" stroke-width="11" stroke-linecap="round"/>
@@ -381,8 +332,8 @@
           <path class="leaf" d="M97 347 C140 310,161 273,166 232 C126 246,103 287,94 330Z" fill="#17a960"/>
           <g transform="translate(96 102)">
             <path d="M0 42 C-52 32,-64 -14,-38 -34 C-18 -50,-3 -22,0 -7 C7 -28,27 -53,45 -33 C70 -7,50 34,0 42Z" fill="url(#tulip3)"/>
-            <path d="M0 42 C-24 22,-29 -11,0 -43 C28 -10,23 22,0 42Z" fill="#ffabc8" opacity=".9"/>
-            <path d="M-36 -28 C-26 -12,-17 2,0 11 C-14 -6,-18 -26,-16 -41Z" fill="#ffd6e4" opacity=".55"/>
+            <path d="M0 42 C-24 22,-29 -11,0 -43 C28 -10,23 22,0 42Z" fill="#ffe788" opacity=".9"/>
+            <path d="M-36 -28 C-26 -12,-17 2,0 11 C-14 -6,-18 -26,-16 -41Z" fill="#fff2a8" opacity=".55"/>
           </g>
         </svg>
       </div>
@@ -397,9 +348,9 @@
               <stop offset="1" stop-color="#06492f"/>
             </linearGradient>
             <radialGradient id="rose2" cx="52%" cy="42%">
-              <stop offset="0" stop-color="#ffe0ea"/>
-              <stop offset=".48" stop-color="#ff93b8"/>
-              <stop offset="1" stop-color="#e83b75"/>
+              <stop offset="0" stop-color="#ffe1e1"/>
+              <stop offset=".48" stop-color="#ff5f5f"/>
+              <stop offset="1" stop-color="#c30f0f"/>
             </radialGradient>
           </defs>
           <path d="M88 450 C88 350,88 230,85 110" fill="none" stroke="url(#stem4)" stroke-width="10" stroke-linecap="round"/>
@@ -407,10 +358,10 @@
           <path class="leaf" d="M87 287 C121 260,142 235,150 201 C115 208,93 238,87 270Z" fill="#18a760"/>
           <g transform="translate(85 91)">
             <circle r="53" fill="url(#rose2)"/>
-            <path d="M-41 6 C-52 -25,-18 -53,6 -33 C26 -52,56 -24,41 4 C61 23,31 55,5 39 C-18 58,-54 32,-41 6Z" fill="#ff6f9f"/>
-            <path d="M-29 1 C-34 -19,-10 -37,6 -23 C22 -38,43 -15,30 3 C43 19,20 40,3 28 C-13 41,-38 21,-29 1Z" fill="#ffb4ce"/>
-            <path d="M-14 0 C-17 -12,-1 -22,10 -11 C21 -2,13 15,1 17 C-11 13,-19 8,-14 0Z" fill="#f64d82"/>
-            <circle cx="2" cy="1" r="7" fill="#ffe4ec"/>
+            <path d="M-41 6 C-52 -25,-18 -53,6 -33 C26 -52,56 -24,41 4 C61 23,31 55,5 39 C-18 58,-54 32,-41 6Z" fill="#ef2a2a"/>
+            <path d="M-29 1 C-34 -19,-10 -37,6 -23 C22 -38,43 -15,30 3 C43 19,20 40,3 28 C-13 41,-38 21,-29 1Z" fill="#ff8686"/>
+            <path d="M-14 0 C-17 -12,-1 -22,10 -11 C21 -2,13 15,1 17 C-11 13,-19 8,-14 0Z" fill="#b10000"/>
+            <circle cx="2" cy="1" r="7" fill="#ffe8e8"/>
           </g>
         </svg>
       </div>
@@ -425,9 +376,9 @@
               <stop offset="1" stop-color="#06472e"/>
             </linearGradient>
             <linearGradient id="tulip5" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#ffd6e6"/>
-              <stop offset=".55" stop-color="#ff8db7"/>
-              <stop offset="1" stop-color="#e73a75"/>
+              <stop offset="0" stop-color="#fff4b3"/>
+              <stop offset=".55" stop-color="#ffd957"/>
+              <stop offset="1" stop-color="#edae00"/>
             </linearGradient>
           </defs>
           <path d="M75 397 C74 314,78 216,72 119" fill="none" stroke="url(#stem5)" stroke-width="9" stroke-linecap="round"/>
@@ -435,7 +386,7 @@
           <path class="leaf" d="M74 268 C108 239,125 211,132 181 C101 188,79 217,74 251Z" fill="#16a860"/>
           <g transform="translate(72 91)">
             <path d="M0 38 C-43 29,-54 -9,-32 -28 C-14 -42,-2 -18,0 -5 C6 -24,22 -43,37 -27 C58 -5,42 30,0 38Z" fill="url(#tulip5)"/>
-            <path d="M0 38 C-19 20,-23 -9,0 -36 C22 -8,19 20,0 38Z" fill="#ffa4c4" opacity=".9"/>
+            <path d="M0 38 C-19 20,-23 -9,0 -36 C22 -8,19 20,0 38Z" fill="#ffe786" opacity=".9"/>
           </g>
         </svg>
       </div>
@@ -446,20 +397,6 @@
 
   <script>
     const scene = document.getElementById('scene');
-
-    function addHearts(){
-      const total = window.innerWidth < 600 ? 13 : 20;
-      for(let i=0;i<total;i++){
-        const heart = document.createElement('span');
-        heart.className = 'heart';
-        heart.style.setProperty('--x', `${Math.random()*100}%`);
-        heart.style.setProperty('--s', `${12 + Math.random()*24}px`);
-        heart.style.setProperty('--t', `${8 + Math.random()*9}s`);
-        heart.style.setProperty('--delay', `${Math.random()*10}s`);
-        heart.style.setProperty('--drift', `${-55 + Math.random()*110}px`);
-        scene.appendChild(heart);
-      }
-    }
 
     function addSparks(){
       const total = window.innerWidth < 600 ? 28 : 44;
@@ -476,7 +413,6 @@
     }
 
     function restartAnimation(){
-      scene.classList.remove('restarting');
       const flowers = [...document.querySelectorAll('.flower')];
       const title = document.querySelector('.title-wrap');
 
@@ -491,7 +427,6 @@
       title.style.animation = '';
     }
 
-    addHearts();
     addSparks();
   </script>
 </body>
