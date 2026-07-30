@@ -2,636 +2,508 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <meta name="theme-color" content="#040814" />
-  <title>Sonríe Jath</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#04070d" />
+  <title>Flores Amarillas 💛</title>
   <style>
     :root{
-      --sky-1:#040814;
-      --sky-2:#07142c;
-      --sky-3:#09203e;
-      --gold-1:#fff6b2;
-      --gold-2:#ffd85a;
-      --gold-3:#e8a900;
-      --red-1:#ffd6d6;
-      --red-2:#ff5656;
-      --red-3:#b60d0d;
-      --leaf-1:#13a060;
-      --leaf-2:#0a7a48;
-      --leaf-3:#43bf81;
-      --mist:#4ae1bb;
-      --text:#fff9f0;
+      --bg:#04070d;
+      --bg2:#08111f;
+      --cream:#f6e3b0;
+      --cream-dark:#e8d39a;
+      --code:#031a2e;
+      --code-2:#082541;
+      --white:#f6f8fc;
+      --yellow:#ffd95a;
+      --yellow2:#ffca2a;
+      --yellow3:#f2b500;
+      --green:#6fc16f;
+      --green2:#4ca957;
+      --red:#ff5a5a;
+      --shadow:rgba(0,0,0,.28);
     }
 
     *{ box-sizing:border-box; }
 
-    html, body{
-      margin:0;
+    html,body{
       width:100%;
       height:100%;
-      overflow:hidden;
-      background:#020510;
-      font-family:"Segoe UI", system-ui, -apple-system, sans-serif;
+      margin:0;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at top, #0b1529 0%, var(--bg) 55%);
+      color:var(--white);
+      overflow-x:hidden;
     }
 
     body{
-      color:var(--text);
-      -webkit-tap-highlight-color:transparent;
-      user-select:none;
-      overscroll-behavior:none;
-    }
-
-    .scene{
+      display:flex;
+      justify-content:center;
+      padding:18px 14px 40px;
       position:relative;
-      width:100%;
-      height:100%;
-      overflow:hidden;
-      isolation:isolate;
-      background:
-        radial-gradient(circle at 50% 78%, rgba(55,160,197,.16), transparent 23%),
-        radial-gradient(circle at 15% 15%, rgba(117,52,153,.12), transparent 25%),
-        linear-gradient(180deg, var(--sky-1) 0%, var(--sky-2) 50%, var(--sky-3) 78%, #000 100%);
     }
 
-    .sky-stars{
-      position:absolute;
+    .bg-code{
+      position:fixed;
       inset:0;
+      overflow:hidden;
       z-index:0;
       pointer-events:none;
-      opacity:.85;
-      background-image:
-        radial-gradient(circle, rgba(255,255,255,.9) 0 1px, transparent 2px),
-        radial-gradient(circle, rgba(255,228,114,.95) 0 1.2px, transparent 2.3px),
-        radial-gradient(circle, rgba(255,255,255,.65) 0 .8px, transparent 1.5px);
-      background-size: 110px 110px, 170px 170px, 72px 72px;
-      background-position: 15px 21px, 60px 40px, 30px 10px;
-      animation: skyShift 30s linear infinite;
+      opacity:.24;
+      filter: blur(.3px);
     }
 
-    @keyframes skyShift{
-      from{ transform:translateY(0); }
-      to{ transform:translateY(110px); }
-    }
-
-    .moon{
+    .code-line{
       position:absolute;
-      top:7vh;
-      right:8vw;
-      width:min(18vw, 92px);
-      aspect-ratio:1;
-      z-index:1;
-      border-radius:50%;
-      background:
-        radial-gradient(circle at 32% 30%, #fffef8 0 22%, #fff7d9 23% 48%, #f7dfa0 49% 72%, rgba(247,223,160,.2) 73% 100%);
-      box-shadow:
-        0 0 18px rgba(255,236,171,.45),
-        0 0 42px rgba(255,236,171,.28),
-        0 0 78px rgba(255,236,171,.18);
-      opacity:.85;
-      filter:saturate(1.08);
+      left:0;
+      width:140%;
+      color:#d8ecff;
+      font-family: Consolas, monospace;
+      font-size:clamp(16px, 2.6vw, 28px);
+      white-space:nowrap;
+      animation: drift linear infinite;
+      text-shadow: 0 0 10px rgba(255,255,255,.05);
     }
 
-    .moon::before,
-    .moon::after{
+    .code-line.red { color:#ff5d5d; opacity:.24; }
+    .code-line.cyan { color:#68dbff; opacity:.22; }
+    .code-line.white { color:#f4f7fb; opacity:.18; }
+
+    @keyframes drift{
+      from{ transform:translateX(-8%); }
+      to{ transform:translateX(-32%); }
+    }
+
+    .spark{
+      position:fixed;
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background: radial-gradient(circle, #fff8bf 0 35%, #ffd54d 36% 70%, rgba(255,213,77,0) 71%);
+      box-shadow:0 0 12px rgba(255,217,90,.85), 0 0 24px rgba(255,217,90,.35);
+      animation: twinkle ease-in-out infinite alternate;
+      z-index:1;
+      pointer-events:none;
+    }
+
+    @keyframes twinkle{
+      from{ opacity:.15; transform:scale(.6); }
+      to{ opacity:1; transform:scale(1.55); }
+    }
+
+    .page{
+      position:relative;
+      width:min(100%, 420px);
+      z-index:2;
+    }
+
+    .brand{
+      text-align:center;
+      margin-top:8px;
+      margin-bottom:16px;
+    }
+
+    .brand-logo{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:74px;
+      height:74px;
+      border-radius:22px;
+      margin-bottom:2px;
+      background:linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 14px 34px rgba(0,0,0,.25);
+      font-size:44px;
+      font-weight:800;
+      letter-spacing:.04em;
+    }
+
+    .brand-name{
+      font-weight:700;
+      letter-spacing:.16em;
+      font-size:18px;
+      margin-top:2px;
+    }
+
+    .tabs{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      margin:8px 6px 20px;
+    }
+
+    .tab{
+      flex:1;
+      text-align:center;
+      padding:10px 0;
+      font-size:clamp(16px, 5vw, 20px);
+      font-family: Consolas, monospace;
+      letter-spacing:.05em;
+      border-radius:16px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 8px 18px rgba(0,0,0,.18);
+      backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
+    }
+
+    .hero-card{
+      position:relative;
+      background:var(--cream);
+      border-radius:34px;
+      min-height:360px;
+      padding:22px 20px 18px;
+      box-shadow:
+        0 20px 45px rgba(0,0,0,.26),
+        inset 0 1px 0 rgba(255,255,255,.25);
+      overflow:hidden;
+    }
+
+    .hero-card::before{
       content:"";
       position:absolute;
+      inset:auto -40px -30px auto;
+      width:140px;
+      height:140px;
       border-radius:50%;
-      background:rgba(219,203,150,.16);
-      filter:blur(.2px);
+      background:rgba(255,255,255,.13);
+      filter:blur(2px);
     }
 
-    .moon::before{ width:18%; height:18%; top:22%; left:30%; }
-    .moon::after{ width:12%; height:12%; bottom:26%; right:24%; }
-
-    .moon-glow{
-      position:absolute;
-      top:5vh;
-      right:5vw;
-      width:min(28vw, 140px);
-      aspect-ratio:1;
-      z-index:0;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(255,228,130,.25), rgba(255,228,130,0) 68%);
-      filter:blur(10px);
-      animation: moonPulse 6s ease-in-out infinite alternate;
-    }
-
-    @keyframes moonPulse{
-      from{ opacity:.28; transform:scale(.94); }
-      to{ opacity:.52; transform:scale(1.08); }
-    }
-
-    .title-wrap{
-      position:absolute;
-      top:6.5vh;
-      left:50%;
-      transform:translateX(-50%);
-      width:min(92vw, 860px);
-      z-index:10;
+    .love{
       text-align:center;
-      pointer-events:none;
-      opacity:0;
-      animation: titleEnter 1.3s .8s cubic-bezier(.2,.8,.2,1) forwards;
+      color:#22160f;
+      font-size:22px;
+      font-family:"Trebuchet MS", "Comic Sans MS", cursive, sans-serif;
+      margin-bottom:10px;
     }
 
-    h1{
-      margin:0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-weight:500;
-      font-size:clamp(42px, 10.6vw, 96px);
-      line-height:1;
-      letter-spacing:.015em;
-      text-transform:lowercase;
-      color:var(--text);
-      text-shadow:
-        0 0 10px rgba(255,246,221,.82),
-        0 0 24px rgba(255,227,137,.35),
-        0 0 54px rgba(255,227,137,.16);
-      animation: titleGlow 3.8s ease-in-out infinite alternate;
+    .love span{
+      display:inline-block;
+      transform:translateY(1px);
     }
 
-    .subtitle{
-      margin-top:10px;
-      font-size:clamp(11px, 2.9vw, 18px);
-      letter-spacing:.28em;
-      text-transform:uppercase;
-      color:rgba(255,246,238,.72);
+    .illustration{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:270px;
+      position:relative;
     }
 
-    @keyframes titleEnter{
-      from{ opacity:0; transform:translateX(-50%) translateY(-14px); }
-      to{ opacity:1; transform:translateX(-50%) translateY(0); }
+    .illustration svg{
+      width:min(88%, 280px);
+      height:auto;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,.16));
     }
 
-    @keyframes titleGlow{
-      from{
-        text-shadow:
-          0 0 9px rgba(255,246,221,.7),
-          0 0 22px rgba(255,227,137,.24),
-          0 0 44px rgba(255,227,137,.12);
-      }
-      to{
-        text-shadow:
-          0 0 12px rgba(255,246,221,.92),
-          0 0 30px rgba(255,227,137,.4),
-          0 0 62px rgba(255,227,137,.2);
-      }
-    }
-
-    .garden{
+    .sparkle-dot{
       position:absolute;
-      left:50%;
-      bottom:2.3vh;
-      width:min(980px, 100vw);
-      height:min(67vh, 760px);
-      transform:translateX(-50%);
-      z-index:6;
-    }
-
-    .mist{
-      position:absolute;
-      left:50%;
-      bottom:3vh;
-      width:min(94vw, 880px);
-      height:120px;
-      transform:translateX(-50%);
-      z-index:2;
+      width:16px;
+      height:16px;
+      background: radial-gradient(circle, #fff8c2 0 35%, #ffd969 36% 70%, rgba(255,217,105,0) 71%);
+      box-shadow:0 0 12px rgba(255,216,90,.6);
       border-radius:50%;
-      background:
-        radial-gradient(ellipse at 30% 50%, rgba(74,225,187,.18), transparent 60%),
-        radial-gradient(ellipse at 68% 50%, rgba(74,225,187,.16), transparent 60%),
-        radial-gradient(ellipse at center, rgba(74,225,187,.18), transparent 68%);
-      filter:blur(18px);
-      animation: mistMove 5s ease-in-out infinite alternate;
+      animation: cardSpark 1.8s ease-in-out infinite alternate;
     }
 
-    @keyframes mistMove{
-      from{ opacity:.45; transform:translateX(-50%) scale(.96); }
-      to{ opacity:.82; transform:translateX(-50%) scale(1.04); }
+    .sparkle-dot.s1{ left:18%; top:44%; animation-delay:.2s; }
+    .sparkle-dot.s2{ right:18%; top:36%; animation-delay:.8s; }
+    .sparkle-dot.s3{ right:24%; bottom:20%; animation-delay:1.3s; }
+    .sparkle-dot.s4{ left:22%; bottom:24%; animation-delay:.5s; }
+
+    @keyframes cardSpark{
+      from{ opacity:.2; transform:scale(.7) translateY(0); }
+      to{ opacity:1; transform:scale(1.25) translateY(-6px); }
     }
 
-    .grass{
-      position:absolute;
-      bottom:0;
-      left:var(--x);
-      width:var(--w);
-      height:var(--h);
-      border-radius:100% 0 100% 0;
-      background:linear-gradient(180deg, #1ec978, #0b6f44 80%);
-      transform-origin:bottom center;
-      transform:translateX(-50%) rotate(var(--r));
-      opacity:.88;
-      filter:drop-shadow(0 0 8px rgba(20,156,96,.18));
+    .code-box{
+      margin:22px auto 0;
+      background:linear-gradient(180deg, var(--code-2), var(--code));
+      border-radius:30px;
+      padding:16px 16px 18px;
+      box-shadow:0 18px 38px rgba(0,0,0,.32);
+      border:1px solid rgba(255,255,255,.06);
+      overflow:hidden;
     }
 
-    .flower{
-      position:absolute;
-      left:var(--x);
-      bottom:0;
-      width:var(--w);
-      height:var(--h);
-      transform-origin:50% 100%;
-      transform:translateX(-50%) rotate(var(--r)) scaleY(0);
-      animation:
-        flowerGrow 1.9s var(--d) cubic-bezier(.18,.84,.27,1) forwards,
-        flowerSway 5s calc(var(--d) + 1.9s) ease-in-out infinite alternate;
-      filter:drop-shadow(0 14px 20px rgba(0,0,0,.34));
-      will-change:transform;
+    .code-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:12px;
+      gap:10px;
+      color:#d9ecff;
+      font-family:Consolas, monospace;
+      font-size:15px;
     }
 
-    .flower svg{
-      width:100%;
-      height:100%;
-      overflow:visible;
+    .dots{
+      display:flex;
+      gap:8px;
+      align-items:center;
     }
 
-    @keyframes flowerGrow{
-      0%{ transform:translateX(-50%) rotate(var(--r)) scaleY(0); }
-      72%{ transform:translateX(-50%) rotate(var(--r)) scaleY(1.05); }
-      100%{ transform:translateX(-50%) rotate(var(--r)) scaleY(1); }
-    }
-
-    @keyframes flowerSway{
-      from{ transform:translateX(-50%) rotate(calc(var(--r) - 1.4deg)) scaleY(1); }
-      to{ transform:translateX(-50%) rotate(calc(var(--r) + 1.5deg)) scaleY(1); }
-    }
-
-    .leaf{
-      animation: leafWave 4.5s ease-in-out infinite alternate;
-      transform-origin:center;
-    }
-
-    @keyframes leafWave{
-      from{ filter:brightness(.96); }
-      to{ filter:brightness(1.16); }
-    }
-
-    .firefly{
-      position:absolute;
-      left:var(--x);
-      top:var(--y);
-      width:var(--s);
-      height:var(--s);
-      z-index:3;
-      border-radius:50%;
-      pointer-events:none;
-      background:radial-gradient(circle, rgba(255,247,186,1) 0 34%, rgba(255,214,74,.96) 35% 64%, rgba(255,214,74,0) 100%);
-      box-shadow:
-        0 0 10px rgba(255,228,112,.95),
-        0 0 24px rgba(255,208,74,.7),
-        0 0 48px rgba(255,208,74,.34);
-      opacity:.18;
-      animation:
-        fireflyBlink var(--t) var(--d) ease-in-out infinite,
-        fireflyFloat var(--tf) var(--df) ease-in-out infinite alternate;
-      will-change:transform,opacity;
-      filter:blur(.12px);
-    }
-
-    .firefly.big{
-      width:var(--s2);
-      height:var(--s2);
-      box-shadow:
-        0 0 16px rgba(255,228,112,.96),
-        0 0 34px rgba(255,208,74,.8),
-        0 0 70px rgba(255,208,74,.38);
-      animation-duration: calc(var(--t) * 1.2), calc(var(--tf) * 1.2);
-    }
-
-    @keyframes fireflyBlink{
-      0%,100%{ opacity:.06; transform:scale(.5); }
-      22%{ opacity:.34; transform:scale(.86); }
-      48%{ opacity:1; transform:scale(1.72); }
-      70%{ opacity:.56; transform:scale(1.02); }
-    }
-
-    @keyframes fireflyFloat{
-      from{ margin-left:-4px; margin-top:2px; }
-      to{ margin-left:6px; margin-top:-14px; }
-    }
-
-    .tap-burst{
-      position:absolute;
+    .dot{
       width:14px;
       height:14px;
-      margin-left:-7px;
-      margin-top:-7px;
       border-radius:50%;
-      pointer-events:none;
-      z-index:20;
-      background:radial-gradient(circle, rgba(255,245,190,.95), rgba(255,210,80,.2) 55%, rgba(255,210,80,0) 72%);
-      box-shadow:
-        0 0 14px rgba(255,233,122,.8),
-        0 0 34px rgba(255,205,80,.45);
-      animation: burstPop .8s ease-out forwards;
+      box-shadow:0 0 8px rgba(255,255,255,.12);
     }
 
-    @keyframes burstPop{
-      0%{ opacity:0; transform:scale(.2); }
-      15%{ opacity:1; }
-      100%{ opacity:0; transform:scale(3.2); }
+    .dot.red{ background:#ff5b5b; }
+    .dot.yellow{ background:#ffd54c; }
+    .dot.green{ background:#79d66a; }
+
+    pre{
+      margin:0;
+      overflow:auto;
+      color:#edf5ff;
+      font-family:Consolas, monospace;
+      font-size:clamp(15px, 4vw, 17px);
+      line-height:1.7;
     }
 
-    .replay{
-      position:absolute;
-      right:12px;
-      bottom:12px;
-      z-index:25;
-      border:none;
-      border-radius:999px;
-      padding:10px 14px;
-      color:rgba(255,255,255,.86);
-      background:rgba(9,14,30,.58);
-      box-shadow:0 6px 20px rgba(0,0,0,.24);
-      backdrop-filter:blur(10px);
-      -webkit-backdrop-filter:blur(10px);
+    .line-no{
+      color:#6e86a5;
+      display:inline-block;
+      width:24px;
+      user-select:none;
+    }
+
+    .sel{ color:#f6d45c; }
+    .prop{ color:#f4f7fb; }
+    .valr{ color:#ff826d; }
+    .valg{ color:#86de7b; }
+    .valy{ color:#ffca58; }
+    .tag{ color:#97c9ff; }
+
+    .footer-note{
+      text-align:center;
+      margin-top:16px;
+      color:rgba(255,255,255,.68);
       font-size:13px;
-      cursor:pointer;
-      transition:.25s ease;
     }
 
-    .replay:hover,
-    .replay:active{
-      background:rgba(255,204,86,.14);
-      color:#fff;
-      transform:translateY(-1px);
-    }
-
-    .hint{
-      position:absolute;
-      left:50%;
-      bottom:14px;
-      transform:translateX(-50%);
-      z-index:15;
-      font-size:11px;
-      letter-spacing:.08em;
-      color:rgba(255,255,255,.45);
-      pointer-events:none;
-      opacity:.8;
-    }
-
-    @media (max-width: 600px){
-      .moon{ top:7vh; right:7vw; width:min(20vw, 84px); }
-      .moon-glow{ top:5vh; right:4vw; width:min(30vw, 126px); }
-      .title-wrap{ top:5.6vh; }
-      h1{ font-size:clamp(40px, 10.2vw, 68px); }
-      .subtitle{ letter-spacing:.18em; }
-      .garden{ height:64vh; bottom:2vh; }
-      .mist{ height:104px; bottom:4vh; }
-      .replay{ padding:9px 12px; font-size:12px; }
-      .hint{ display:none; }
-    }
-
-    @media (min-width: 900px){
-      .hint{ font-size:12px; }
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      *,*::before,*::after{
-        animation-duration:.01ms !important;
-        animation-delay:0ms !important;
-        animation-iteration-count:1 !important;
-      }
+    @media (max-width:430px){
+      .hero-card{ min-height:340px; border-radius:28px; }
+      .code-box{ border-radius:24px; }
+      .brand-logo{ width:66px; height:66px; font-size:38px; }
+      .love{ font-size:20px; }
+      pre{ font-size:15px; }
     }
   </style>
 </head>
 <body>
-  <main class="scene" id="scene" aria-label="Jardín nocturno animado con tulipanes amarillos y rosas rojas">
-    <div class="sky-stars"></div>
-    <div class="moon-glow"></div>
-    <div class="moon"></div>
+  <div class="bg-code" aria-hidden="true" id="bgCode"></div>
+  <div id="sparkLayer" aria-hidden="true"></div>
 
-    <div class="title-wrap">
-      <h1>sonríe jath</h1>
+  <main class="page">
+    <div class="brand">
+      <div class="brand-logo">A</div>
+      <div class="brand-name">DEV</div>
     </div>
 
-    <div class="mist"></div>
+    <section class="tabs" aria-label="tecnologías">
+      <div class="tab">Html</div>
+      <div class="tab">Css</div>
+      <div class="tab">Js</div>
+    </section>
 
-    <section class="garden" aria-hidden="true" id="garden">
-      <!-- Grass backdrop -->
-      <span class="grass" style="--x:8%; --w:16px; --h:130px; --r:-16deg;"></span>
-      <span class="grass" style="--x:15%; --w:12px; --h:82px; --r:12deg;"></span>
-      <span class="grass" style="--x:23%; --w:18px; --h:110px; --r:-10deg;"></span>
-      <span class="grass" style="--x:31%; --w:12px; --h:84px; --r:8deg;"></span>
-      <span class="grass" style="--x:42%; --w:16px; --h:124px; --r:-12deg;"></span>
-      <span class="grass" style="--x:58%; --w:15px; --h:102px; --r:10deg;"></span>
-      <span class="grass" style="--x:68%; --w:16px; --h:132px; --r:-8deg;"></span>
-      <span class="grass" style="--x:77%; --w:13px; --h:90px; --r:12deg;"></span>
-      <span class="grass" style="--x:88%; --w:18px; --h:122px; --r:-10deg;"></span>
+    <section class="hero-card">
+      <div class="love">I Love You <span>❤️</span></div>
 
-      <!-- Tulipán izquierdo -->
-      <div class="flower" style="--x:12%; --w:140px; --h:355px; --r:-8deg; --d:.18s;">
-        <svg viewBox="0 0 150 390">
-          <defs>
-            <linearGradient id="stemA" x1="0" x2="1">
-              <stop offset="0" stop-color="#0a7d49"/>
-              <stop offset=".5" stop-color="#1bc36f"/>
-              <stop offset="1" stop-color="#095d38"/>
-            </linearGradient>
-            <linearGradient id="tulipA" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#fff7c7"/>
-              <stop offset=".56" stop-color="#ffd857"/>
-              <stop offset="1" stop-color="#eda300"/>
-            </linearGradient>
-          </defs>
-          <path d="M74 370 C70 302,72 214,76 110" fill="none" stroke="url(#stemA)" stroke-width="10" stroke-linecap="round"/>
-          <path class="leaf" d="M73 277 C40 247,26 224,22 186 C52 198,70 225,76 263Z" fill="#0f8f55"/>
-          <path class="leaf" d="M75 244 C109 210,124 188,130 155 C102 163,82 194,75 229Z" fill="#43bf81"/>
-          <g transform="translate(76 84)">
-            <path d="M0 40 C-44 30,-56 -10,-34 -30 C-17 -44,-4 -18,0 -6 C6 -22,22 -45,39 -30 C62 -9,46 31,0 40Z" fill="url(#tulipA)"/>
-            <path d="M0 40 C-20 21,-24 -10,0 -38 C23 -8,20 20,0 40Z" fill="#ffe787" opacity=".9"/>
+      <div class="illustration">
+        <span class="sparkle-dot s1"></span>
+        <span class="sparkle-dot s2"></span>
+        <span class="sparkle-dot s3"></span>
+        <span class="sparkle-dot s4"></span>
+
+        <svg viewBox="0 0 260 260" role="img" aria-label="Conejito sosteniendo flores amarillas">
+          <!-- shadow -->
+          <ellipse cx="130" cy="220" rx="48" ry="12" fill="rgba(100,80,50,.18)"/>
+
+          <!-- ears -->
+          <ellipse cx="106" cy="54" rx="17" ry="34" fill="#efeff6" stroke="#655e66" stroke-width="2.2"/>
+          <ellipse cx="154" cy="54" rx="17" ry="34" fill="#efeff6" stroke="#655e66" stroke-width="2.2"/>
+          <ellipse cx="106" cy="57" rx="7" ry="19" fill="#f3d7dc"/>
+          <ellipse cx="154" cy="57" rx="7" ry="19" fill="#f3d7dc"/>
+
+          <!-- body -->
+          <rect x="92" y="76" width="76" height="114" rx="30" fill="#f0f1f6" stroke="#655e66" stroke-width="2.2"/>
+          <ellipse cx="130" cy="98" rx="24" ry="17" fill="#f0f1f6"/>
+          <ellipse cx="118" cy="92" rx="3" ry="4" fill="#463f45"/>
+          <ellipse cx="142" cy="92" rx="3" ry="4" fill="#463f45"/>
+          <ellipse cx="130" cy="101" rx="5" ry="4" fill="#f3a6ac"/>
+          <path d="M123 109 Q130 115 137 109" fill="none" stroke="#544c52" stroke-width="2.4" stroke-linecap="round"/>
+          <circle cx="111" cy="102" r="4" fill="#f5c1c7" opacity=".75"/>
+          <circle cx="149" cy="102" r="4" fill="#f5c1c7" opacity=".75"/>
+
+          <!-- feet -->
+          <ellipse cx="112" cy="194" rx="13" ry="22" fill="#efeff6" stroke="#655e66" stroke-width="2.2"/>
+          <ellipse cx="148" cy="194" rx="13" ry="22" fill="#efeff6" stroke="#655e66" stroke-width="2.2"/>
+
+          <!-- bouquet stems -->
+          <g opacity=".95">
+            <path d="M126 176 L98 120" stroke="#5aae56" stroke-width="5" stroke-linecap="round"/>
+            <path d="M132 176 L114 118" stroke="#6abf63" stroke-width="5" stroke-linecap="round"/>
+            <path d="M136 176 L128 114" stroke="#5aae56" stroke-width="5" stroke-linecap="round"/>
+            <path d="M140 176 L147 115" stroke="#6abf63" stroke-width="5" stroke-linecap="round"/>
+            <path d="M145 176 L164 122" stroke="#5aae56" stroke-width="5" stroke-linecap="round"/>
           </g>
-        </svg>
-      </div>
 
-      <!-- Rosa izquierda -->
-      <div class="flower" style="--x:33%; --w:155px; --h:420px; --r:3deg; --d:.5s;">
-        <svg viewBox="0 0 168 450">
-          <defs>
-            <linearGradient id="stemB" x1="0" x2="1">
-              <stop offset="0" stop-color="#0a7243"/>
-              <stop offset=".5" stop-color="#17b568"/>
-              <stop offset="1" stop-color="#075935"/>
-            </linearGradient>
-            <radialGradient id="roseB" cx="50%" cy="38%">
-              <stop offset="0" stop-color="#ffd8d8"/>
-              <stop offset=".42" stop-color="#ff5a5a"/>
-              <stop offset="1" stop-color="#bb0e0e"/>
-            </radialGradient>
-          </defs>
-          <path d="M85 432 C83 338,84 232,86 105" fill="none" stroke="url(#stemB)" stroke-width="10" stroke-linecap="round"/>
-          <path class="leaf" d="M84 316 C48 291,31 268,29 236 C61 246,79 271,86 302Z" fill="#0d8a50"/>
-          <path class="leaf" d="M86 280 C118 251,136 227,143 195 C112 203,93 232,85 264Z" fill="#48c283"/>
-          <g transform="translate(85 87)">
-            <circle r="52" fill="url(#roseB)"/>
-            <path d="M-40 6 C-52 -22,-18 -51,6 -33 C28 -52,58 -21,42 4 C61 24,30 55,5 38 C-18 58,-53 30,-40 6Z" fill="#f33232"/>
-            <path d="M-28 0 C-33 -18,-9 -34,6 -23 C21 -35,40 -13,29 4 C40 19,19 39,2 27 C-12 39,-37 20,-28 0Z" fill="#ff9090"/>
-            <path d="M-13 1 C-16 -12,0 -20,10 -10 C20 -2,13 14,1 16 C-10 13,-18 8,-13 1Z" fill="#b80000"/>
-            <circle cx="2" cy="1" r="7" fill="#ffecec"/>
-          </g>
-        </svg>
-      </div>
+          <!-- paws -->
+          <ellipse cx="101" cy="140" rx="11" ry="16" fill="#efeff6" stroke="#655e66" stroke-width="2.2" transform="rotate(-18 101 140)"/>
+          <ellipse cx="158" cy="140" rx="11" ry="16" fill="#efeff6" stroke="#655e66" stroke-width="2.2" transform="rotate(18 158 140)"/>
 
-      <!-- Tulipán central -->
-      <div class="flower" style="--x:50%; --w:180px; --h:500px; --r:-1deg; --d:.06s;">
-        <svg viewBox="0 0 190 535">
-          <defs>
-            <linearGradient id="stemC" x1="0" x2="1">
-              <stop offset="0" stop-color="#0b7d48"/>
-              <stop offset=".52" stop-color="#1ac06c"/>
-              <stop offset="1" stop-color="#0a6039"/>
-            </linearGradient>
-            <linearGradient id="tulipC" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#fff7c6"/>
-              <stop offset=".57" stop-color="#ffe16d"/>
-              <stop offset="1" stop-color="#e7a900"/>
-            </linearGradient>
-          </defs>
-          <path d="M95 515 C92 396,93 276,95 126" fill="none" stroke="url(#stemC)" stroke-width="11" stroke-linecap="round"/>
-          <path class="leaf" d="M93 376 C48 348,27 318,24 274 C66 291,88 324,95 362Z" fill="#109257"/>
-          <path class="leaf" d="M97 332 C141 294,160 260,165 220 C125 233,102 274,95 315Z" fill="#4ac383"/>
-          <g transform="translate(96 98)">
-            <path d="M0 44 C-51 35,-64 -14,-38 -35 C-18 -51,-3 -23,0 -7 C7 -28,27 -53,45 -34 C70 -9,51 35,0 44Z" fill="url(#tulipC)"/>
-            <path d="M0 44 C-24 24,-29 -11,0 -43 C29 -9,23 23,0 44Z" fill="#ffe98f" opacity=".92"/>
-            <path d="M-28 -24 C-21 -10,-14 2,0 11 C-10 -2,-13 -20,-12 -34Z" fill="#fff2a8" opacity=".5"/>
-          </g>
-        </svg>
-      </div>
+          <!-- flowers -->
+          <g>
+            <!-- flower helper shapes -->
+            <g transform="translate(82 112)">
+              <circle r="10" fill="#f3a13b"/>
+              <g fill="#ffd95a" stroke="#8a6b18" stroke-width="2">
+                <circle cx="0" cy="-17" r="11"/>
+                <circle cx="16" cy="-6" r="11"/>
+                <circle cx="10" cy="13" r="11"/>
+                <circle cx="-10" cy="13" r="11"/>
+                <circle cx="-16" cy="-5" r="11"/>
+              </g>
+            </g>
 
-      <!-- Rosa derecha -->
-      <div class="flower" style="--x:67%; --w:160px; --h:430px; --r:-4deg; --d:.74s;">
-        <svg viewBox="0 0 172 460">
-          <defs>
-            <linearGradient id="stemD" x1="0" x2="1">
-              <stop offset="0" stop-color="#0a6f42"/>
-              <stop offset=".5" stop-color="#17b166"/>
-              <stop offset="1" stop-color="#085833"/>
-            </linearGradient>
-            <radialGradient id="roseD" cx="52%" cy="38%">
-              <stop offset="0" stop-color="#ffe0e0"/>
-              <stop offset=".42" stop-color="#ff5a5a"/>
-              <stop offset="1" stop-color="#c20d0d"/>
-            </radialGradient>
-          </defs>
-          <path d="M87 442 C86 339,87 233,84 108" fill="none" stroke="url(#stemD)" stroke-width="10" stroke-linecap="round"/>
-          <path class="leaf" d="M85 321 C50 293,33 269,31 236 C63 247,80 272,87 307Z" fill="#0f8950"/>
-          <path class="leaf" d="M86 282 C119 253,138 229,145 196 C113 204,93 232,86 267Z" fill="#45bd7e"/>
-          <g transform="translate(85 88)">
-            <circle r="52" fill="url(#roseD)"/>
-            <path d="M-41 6 C-52 -23,-18 -52,6 -33 C28 -52,58 -22,42 4 C61 24,30 56,5 39 C-18 58,-53 31,-41 6Z" fill="#f12d2d"/>
-            <path d="M-28 0 C-33 -18,-9 -35,6 -23 C20 -36,41 -14,29 4 C41 18,18 39,2 28 C-12 39,-38 20,-28 0Z" fill="#ff8c8c"/>
-            <path d="M-13 1 C-16 -12,0 -21,10 -10 C20 -2,13 14,1 16 C-10 13,-18 8,-13 1Z" fill="#b30000"/>
-            <circle cx="2" cy="1" r="7" fill="#fff0f0"/>
-          </g>
-        </svg>
-      </div>
+            <g transform="translate(107 100)">
+              <circle r="10" fill="#f3a13b"/>
+              <g fill="#ffe067" stroke="#8a6b18" stroke-width="2">
+                <circle cx="0" cy="-18" r="12"/>
+                <circle cx="17" cy="-7" r="12"/>
+                <circle cx="10" cy="14" r="12"/>
+                <circle cx="-10" cy="14" r="12"/>
+                <circle cx="-17" cy="-6" r="12"/>
+              </g>
+            </g>
 
-      <!-- Tulipán derecho -->
-      <div class="flower" style="--x:86%; --w:136px; --h:340px; --r:9deg; --d:.32s;">
-        <svg viewBox="0 0 148 372">
-          <defs>
-            <linearGradient id="stemE" x1="0" x2="1">
-              <stop offset="0" stop-color="#0a7645"/>
-              <stop offset=".55" stop-color="#19ba6a"/>
-              <stop offset="1" stop-color="#085734"/>
-            </linearGradient>
-            <linearGradient id="tulipE" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#fff4b6"/>
-              <stop offset=".56" stop-color="#ffd757"/>
-              <stop offset="1" stop-color="#e2a000"/>
-            </linearGradient>
-          </defs>
-          <path d="M73 354 C71 286,76 204,70 111" fill="none" stroke="url(#stemE)" stroke-width="9" stroke-linecap="round"/>
-          <path class="leaf" d="M72 271 C39 245,24 222,23 189 C53 200,69 225,74 259Z" fill="#0f8850"/>
-          <path class="leaf" d="M72 237 C104 208,120 184,126 154 C97 161,77 190,71 221Z" fill="#47bf80"/>
-          <g transform="translate(70 84)">
-            <path d="M0 39 C-42 30,-54 -9,-32 -28 C-15 -41,-3 -18,0 -6 C6 -22,21 -42,37 -27 C59 -6,43 31,0 39Z" fill="url(#tulipE)"/>
-            <path d="M0 39 C-19 20,-23 -9,0 -36 C22 -8,20 20,0 39Z" fill="#ffe786" opacity=".92"/>
+            <g transform="translate(132 115)">
+              <circle r="10" fill="#f3a13b"/>
+              <g fill="#ffd85a" stroke="#8a6b18" stroke-width="2">
+                <circle cx="0" cy="-17" r="11"/>
+                <circle cx="16" cy="-6" r="11"/>
+                <circle cx="10" cy="13" r="11"/>
+                <circle cx="-10" cy="13" r="11"/>
+                <circle cx="-16" cy="-5" r="11"/>
+              </g>
+            </g>
+
+            <g transform="translate(156 101)">
+              <circle r="10" fill="#f3a13b"/>
+              <g fill="#ffe067" stroke="#8a6b18" stroke-width="2">
+                <circle cx="0" cy="-18" r="12"/>
+                <circle cx="17" cy="-7" r="12"/>
+                <circle cx="10" cy="14" r="12"/>
+                <circle cx="-10" cy="14" r="12"/>
+                <circle cx="-17" cy="-6" r="12"/>
+              </g>
+            </g>
+
+            <g transform="translate(178 114)">
+              <circle r="9" fill="#f3a13b"/>
+              <g fill="#ffd658" stroke="#8a6b18" stroke-width="2">
+                <circle cx="0" cy="-15" r="10"/>
+                <circle cx="14" cy="-5" r="10"/>
+                <circle cx="8" cy="11" r="10"/>
+                <circle cx="-8" cy="11" r="10"/>
+                <circle cx="-14" cy="-5" r="10"/>
+              </g>
+            </g>
+
+            <g transform="translate(145 86) scale(.6)">
+              <circle r="8" fill="#f3a13b"/>
+              <g fill="#ffd658" stroke="#8a6b18" stroke-width="2">
+                <circle cx="0" cy="-13" r="8"/>
+                <circle cx="12" cy="-4" r="8"/>
+                <circle cx="8" cy="10" r="8"/>
+                <circle cx="-8" cy="10" r="8"/>
+                <circle cx="-12" cy="-4" r="8"/>
+              </g>
+            </g>
           </g>
         </svg>
       </div>
     </section>
 
-    <button class="replay" type="button" onclick="restartScene()">↻ Repetir</button>
-    <div class="hint">Toca la pantalla para encender más destellos</div>
+    <section class="code-box">
+      <div class="code-top">
+        <div class="dots">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+        </div>
+        <div>Style.css</div>
+      </div>
+
+      <pre><span class="line-no">1</span><span class="sel">.Flowers__Love</span> {
+<span class="line-no">2</span>  <span class="prop">background-color</span>: <span class="valr">#fae2bf</span>;
+<span class="line-no">3</span>  <span class="prop">color</span>: <span class="valr">#000</span>;
+<span class="line-no">4</span>  <span class="prop">border</span>: <span class="valr">none</span>;
+<span class="line-no">5</span>  <span class="prop">padding</span>: <span class="valy">12px 20px</span>;
+<span class="line-no">6</span>  <span class="prop">font-size</span>: <span class="valy">18px</span>;
+<span class="line-no">7</span>  <span class="prop">font-family</span>: <span class="valg">'Flower'</span>;
+<span class="line-no">8</span>  <span class="prop">border-radius</span>: <span class="valy">10px</span>;
+<span class="line-no">9</span>}</pre>
+    </section>
+
+    <div class="footer-note">Hecho con Html, Css y un toque bonito ✨</div>
   </main>
 
   <script>
-    const scene = document.getElementById('scene');
+    const bg = document.getElementById('bgCode');
+    const sparkLayer = document.getElementById('sparkLayer');
 
-    function addFireflies(){
-      const isMobile = window.innerWidth < 700;
-      const total = isMobile ? 42 : 58;
-      const bigTotal = isMobile ? 14 : 18;
+    const snippets = [
+      "const flowers = ['yellow', 'love', 'smile'];",
+      ".container { display:flex; justify-content:center; }",
+      "document.querySelector('.love').classList.add('active');",
+      "function smile(){ return 'sonríe jath 💛'; }",
+      "background: linear-gradient(180deg, #04101f, #0a203d);",
+      "<div class='flowers'>I Love You ❤️</div>",
+      "if (love === true) { sendFlowers(); }",
+      "border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,.2);",
+      "const bunny = { cute:true, flowers:'yellow' };",
+      ".spark { animation: twinkle 2s infinite alternate; }",
+      "let message = 'Flores Amarillas para ti';",
+      "window.addEventListener('load', () => bloom());"
+    ];
 
+    function makeCodeLine(text, top, duration, cls){
+      const el = document.createElement('div');
+      el.className = `code-line ${cls}`;
+      el.style.top = top + '%';
+      el.style.animationDuration = duration + 's';
+      el.textContent = text;
+      bg.appendChild(el);
+    }
+
+    for(let i=0;i<18;i++){
+      const text = snippets[i % snippets.length];
+      const top = 3 + i * 5.4;
+      const duration = 18 + Math.random() * 18;
+      const cls = i % 3 === 0 ? 'red' : i % 3 === 1 ? 'cyan' : 'white';
+      makeCodeLine(text, top, duration, cls);
+    }
+
+    function addSparkles(){
+      const total = window.innerWidth < 500 ? 18 : 26;
       for(let i=0;i<total;i++){
-        const spark = document.createElement('span');
-        spark.className = 'firefly';
-        spark.style.setProperty('--x', `${4 + Math.random()*92}%`);
-        spark.style.setProperty('--y', `${7 + Math.random()*75}%`);
-        spark.style.setProperty('--s', `${3 + Math.random()*4.5}px`);
-        spark.style.setProperty('--t', `${1.6 + Math.random()*2.6}s`);
-        spark.style.setProperty('--d', `${Math.random()*3.5}s`);
-        spark.style.setProperty('--tf', `${3 + Math.random()*3.2}s`);
-        spark.style.setProperty('--df', `${Math.random()*2.4}s`);
-        scene.appendChild(spark);
-      }
-
-      for(let i=0;i<bigTotal;i++){
-        const glow = document.createElement('span');
-        glow.className = 'firefly big';
-        glow.style.setProperty('--x', `${6 + Math.random()*88}%`);
-        glow.style.setProperty('--y', `${9 + Math.random()*72}%`);
-        glow.style.setProperty('--s', `${4 + Math.random()*4}px`);
-        glow.style.setProperty('--s2', `${12 + Math.random()*18}px`);
-        glow.style.setProperty('--t', `${2.4 + Math.random()*3.2}s`);
-        glow.style.setProperty('--d', `${Math.random()*4}s`);
-        glow.style.setProperty('--tf', `${4 + Math.random()*3}s`);
-        glow.style.setProperty('--df', `${Math.random()*2.8}s`);
-        scene.appendChild(glow);
+        const s = document.createElement('span');
+        s.className = 'spark';
+        s.style.left = (Math.random() * 100) + 'vw';
+        s.style.top = (Math.random() * 100) + 'vh';
+        s.style.animationDuration = (1.3 + Math.random() * 2.6) + 's';
+        s.style.animationDelay = (Math.random() * 2) + 's';
+        sparkLayer.appendChild(s);
       }
     }
 
-    function addBurst(x, y, count = 8){
-      for(let i=0; i<count; i++){
-        const dot = document.createElement('span');
-        dot.className = 'tap-burst';
-        dot.style.left = `${x + (Math.random()*60 - 30)}px`;
-        dot.style.top = `${y + (Math.random()*50 - 25)}px`;
-        dot.style.animationDelay = `${Math.random()*0.12}s`;
-        scene.appendChild(dot);
-        setTimeout(() => dot.remove(), 900);
-      }
-    }
-
-    function restartScene(){
-      const flowers = document.querySelectorAll('.flower');
-      const title = document.querySelector('.title-wrap');
-      flowers.forEach(el => {
-        el.style.animation = 'none';
-        void el.offsetWidth;
-        el.style.animation = '';
-      });
-      title.style.animation = 'none';
-      void title.offsetWidth;
-      title.style.animation = '';
-      addBurst(window.innerWidth * 0.5, window.innerHeight * 0.35, 12);
-    }
-
-    function pointerBurst(event){
-      const x = event.touches ? event.touches[0].clientX : event.clientX;
-      const y = event.touches ? event.touches[0].clientY : event.clientY;
-      addBurst(x, y, 10);
-    }
-
-    scene.addEventListener('click', pointerBurst, { passive:true });
-    scene.addEventListener('touchstart', pointerBurst, { passive:true });
-
-    addFireflies();
-
-    setTimeout(() => {
-      addBurst(window.innerWidth * 0.5, window.innerHeight * 0.28, 8);
-    }, 1800);
+    addSparkles();
   </script>
 </body>
 </html>
