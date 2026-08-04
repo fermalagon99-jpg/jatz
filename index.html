@@ -6,16 +6,18 @@
   <title>Adiós mi niña</title>
   <style>
     :root{
-      --bg1:#06090f;
-      --bg2:#0d1522;
-      --text:#f4f1ea;
-      --soft:#c9b8a6;
-      --stem:#4d7c59;
-      --leaf:#5b9b6b;
-      --petal1:#b84b5e;
-      --petal2:#d86c7d;
-      --petal3:#e79aaa;
-      --center:#d8b36a;
+      --bg1:#05070c;
+      --bg2:#0d1420;
+      --text:#f5f1ea;
+      --soft:#c8b8ab;
+      --stem:#4f7d5c;
+      --stem-dark:#35553f;
+      --leaf:#5c9669;
+      --rose1:#7f1830;
+      --rose2:#a62645;
+      --rose3:#c94868;
+      --rose4:#e48ca2;
+      --petal:#c44a68;
     }
 
     *{
@@ -29,8 +31,7 @@
       height:100%;
       overflow:hidden;
       font-family:"Segoe UI", system-ui, sans-serif;
-      background:
-        radial-gradient(circle at top, #182235 0%, var(--bg2) 35%, var(--bg1) 100%);
+      background: radial-gradient(circle at top, #172236 0%, var(--bg2) 40%, var(--bg1) 100%);
       color:var(--text);
     }
 
@@ -41,11 +42,11 @@
       position:relative;
     }
 
-    .bg-particles{
+    .particles{
       position:fixed;
       inset:0;
-      pointer-events:none;
       overflow:hidden;
+      pointer-events:none;
       z-index:0;
     }
 
@@ -60,11 +61,11 @@
 
     @keyframes floatUp{
       from{
-        transform:translateY(0px);
+        transform:translateY(0);
         opacity:0;
       }
       20%{ opacity:.55; }
-      80%{ opacity:.25; }
+      80%{ opacity:.2; }
       to{
         transform:translateY(-110vh);
         opacity:0;
@@ -74,28 +75,37 @@
     .container{
       position:relative;
       z-index:2;
-      width:min(92vw, 520px);
-      padding:34px 24px 44px;
+      width:min(92vw, 560px);
+      padding:34px 24px 42px;
       border-radius:30px;
       background:rgba(255,255,255,.04);
       border:1px solid rgba(255,255,255,.08);
       backdrop-filter:blur(8px);
       -webkit-backdrop-filter:blur(8px);
-      box-shadow:0 18px 55px rgba(0,0,0,.35);
+      box-shadow:0 20px 60px rgba(0,0,0,.35);
       text-align:center;
     }
 
     h1{
-      font-size:clamp(2rem, 7vw, 3.4rem);
+      font-size:clamp(2rem, 7vw, 3.5rem);
       font-weight:600;
-      letter-spacing:.04em;
+      letter-spacing:.03em;
       margin-bottom:10px;
     }
 
     .subtitle{
       color:var(--soft);
       font-size:clamp(.95rem, 3.5vw, 1.08rem);
-      margin-bottom:26px;
+      margin-bottom:18px;
+    }
+
+    .line{
+      width:80px;
+      height:2px;
+      margin:0 auto 24px;
+      background:linear-gradient(to right, transparent, rgba(255,255,255,.7), transparent);
+      border-radius:999px;
+      opacity:.8;
     }
 
     .scene{
@@ -108,130 +118,108 @@
       overflow:hidden;
     }
 
-    .flower{
+    .rose-wrap{
       position:relative;
-      width:180px;
-      height:340px;
+      width:260px;
+      height:360px;
     }
 
-    .stem{
+    .rose-svg{
+      width:100%;
+      height:100%;
+      overflow:visible;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,.25));
+    }
+
+    .petal-fall{
       position:absolute;
-      left:50%;
-      bottom:42px;
-      width:8px;
-      height:180px;
-      transform:translateX(-50%);
-      background:linear-gradient(to bottom, #77a67e, var(--stem));
-      border-radius:10px;
-      box-shadow:0 0 8px rgba(111, 193, 111, .12);
+      width:24px;
+      height:34px;
+      background:linear-gradient(180deg, #e197ab, var(--petal));
+      border-radius:60% 60% 55% 55%;
+      box-shadow:0 4px 10px rgba(0,0,0,.15);
+      opacity:0;
     }
 
-    .leaf{
-      position:absolute;
-      bottom:140px;
-      width:55px;
-      height:26px;
-      background:linear-gradient(135deg, #76bc87, var(--leaf));
-      border-radius:55px 0 55px 0;
-      opacity:.95;
+    .pf1{
+      left:132px;
+      top:120px;
+      animation: fall1 8s ease-in-out infinite;
     }
 
-    .leaf.left{
-      left:38px;
-      transform:rotate(-25deg);
+    .pf2{
+      left:146px;
+      top:145px;
+      animation: fall2 10s ease-in-out infinite;
     }
 
-    .leaf.right{
-      right:38px;
-      transform:scaleX(-1) rotate(-25deg);
+    .pf3{
+      left:156px;
+      top:168px;
+      animation: fall3 12s ease-in-out infinite;
     }
-
-    .head{
-      position:absolute;
-      left:50%;
-      top:58px;
-      width:130px;
-      height:130px;
-      transform:translateX(-50%);
-    }
-
-    .center{
-      position:absolute;
-      left:50%;
-      top:50%;
-      width:38px;
-      height:38px;
-      transform:translate(-50%, -50%);
-      border-radius:50%;
-      background:radial-gradient(circle, #efd99c 0%, var(--center) 65%, #9f7d43 100%);
-      z-index:5;
-      box-shadow:0 0 12px rgba(216,179,106,.25);
-    }
-
-    .petal{
-      position:absolute;
-      left:50%;
-      top:50%;
-      width:44px;
-      height:62px;
-      margin-left:-22px;
-      margin-top:-31px;
-      transform-origin:50% 85%;
-      border-radius:55% 55% 48% 48%;
-      background:linear-gradient(180deg, var(--petal3), var(--petal2) 45%, var(--petal1));
-      box-shadow:inset 0 0 10px rgba(255,255,255,.08),
-                 0 4px 10px rgba(0,0,0,.16);
-    }
-
-    .p1{ transform:rotate(0deg) translateY(-44px); animation:fall1 8s ease-in-out infinite; }
-    .p2{ transform:rotate(45deg) translateY(-44px); animation:fall2 9s ease-in-out infinite; }
-    .p3{ transform:rotate(90deg) translateY(-44px); animation:fall3 10s ease-in-out infinite; }
-    .p4{ transform:rotate(135deg) translateY(-44px); animation:fall4 11s ease-in-out infinite; }
-    .p5{ transform:rotate(180deg) translateY(-44px); animation:fall5 12s ease-in-out infinite; }
-    .p6{ transform:rotate(225deg) translateY(-44px); animation:fall6 13s ease-in-out infinite; }
-    .p7{ transform:rotate(270deg) translateY(-44px); animation:fall7 14s ease-in-out infinite; }
-    .p8{ transform:rotate(315deg) translateY(-44px); animation:fall8 15s ease-in-out infinite; }
 
     @keyframes fall1{
-      0%,15%{ opacity:1; transform:rotate(0deg) translateY(-44px) translateX(0); }
-      28%,100%{ opacity:0; transform:rotate(120deg) translate(120px, 240px); }
-    }
-    @keyframes fall2{
-      0%,22%{ opacity:1; transform:rotate(45deg) translateY(-44px) translateX(0); }
-      35%,100%{ opacity:0; transform:rotate(150deg) translate(90px, 250px); }
-    }
-    @keyframes fall3{
-      0%,30%{ opacity:1; transform:rotate(90deg) translateY(-44px) translateX(0); }
-      43%,100%{ opacity:0; transform:rotate(180deg) translate(50px, 270px); }
-    }
-    @keyframes fall4{
-      0%,38%{ opacity:1; transform:rotate(135deg) translateY(-44px) translateX(0); }
-      50%,100%{ opacity:0; transform:rotate(205deg) translate(-10px, 280px); }
-    }
-    @keyframes fall5{
-      0%,46%{ opacity:1; transform:rotate(180deg) translateY(-44px) translateX(0); }
-      58%,100%{ opacity:0; transform:rotate(230deg) translate(-55px, 270px); }
-    }
-    @keyframes fall6{
-      0%,54%{ opacity:1; transform:rotate(225deg) translateY(-44px) translateX(0); }
-      66%,100%{ opacity:0; transform:rotate(260deg) translate(-90px, 250px); }
-    }
-    @keyframes fall7{
-      0%,62%{ opacity:1; transform:rotate(270deg) translateY(-44px) translateX(0); }
-      74%,100%{ opacity:0; transform:rotate(300deg) translate(-120px, 235px); }
-    }
-    @keyframes fall8{
-      0%,70%{ opacity:1; transform:rotate(315deg) translateY(-44px) translateX(0); }
-      82%,100%{ opacity:0; transform:rotate(340deg) translate(-70px, 240px); }
+      0%,20%{
+        transform:translate(0,0) rotate(0deg);
+        opacity:0;
+      }
+      24%{
+        opacity:1;
+      }
+      60%{
+        transform:translate(-60px,160px) rotate(130deg);
+        opacity:.85;
+      }
+      100%{
+        transform:translate(-110px,220px) rotate(220deg);
+        opacity:0;
+      }
     }
 
-    .fallen-petals{
+    @keyframes fall2{
+      0%,35%{
+        transform:translate(0,0) rotate(0deg);
+        opacity:0;
+      }
+      39%{
+        opacity:1;
+      }
+      72%{
+        transform:translate(30px,170px) rotate(160deg);
+        opacity:.85;
+      }
+      100%{
+        transform:translate(70px,220px) rotate(260deg);
+        opacity:0;
+      }
+    }
+
+    @keyframes fall3{
+      0%,52%{
+        transform:translate(0,0) rotate(0deg);
+        opacity:0;
+      }
+      56%{
+        opacity:1;
+      }
+      80%{
+        transform:translate(-20px,150px) rotate(120deg);
+        opacity:.8;
+      }
+      100%{
+        transform:translate(-45px,210px) rotate(220deg);
+        opacity:0;
+      }
+    }
+
+    .ground{
       position:absolute;
       bottom:18px;
       left:50%;
-      width:220px;
-      height:70px;
       transform:translateX(-50%);
+      width:240px;
+      height:60px;
       pointer-events:none;
     }
 
@@ -239,31 +227,22 @@
       position:absolute;
       width:24px;
       height:34px;
-      border-radius:55% 55% 48% 48%;
-      background:linear-gradient(180deg, var(--petal3), var(--petal1));
+      border-radius:60% 60% 55% 55%;
+      background:linear-gradient(180deg, #db8fa4, #b53958);
       opacity:.55;
-      filter:blur(.2px);
+      filter:blur(.15px);
     }
 
-    .g1{ left:18px; bottom:10px; transform:rotate(-35deg); }
-    .g2{ left:58px; bottom:2px; transform:rotate(20deg); }
-    .g3{ left:98px; bottom:12px; transform:rotate(-8deg); }
-    .g4{ right:46px; bottom:4px; transform:rotate(38deg); }
-    .g5{ right:14px; bottom:14px; transform:rotate(-22deg); }
-
-    .line{
-      margin:8px auto 0;
-      width:70px;
-      height:2px;
-      border-radius:10px;
-      background:linear-gradient(to right, transparent, rgba(255,255,255,.6), transparent);
-      opacity:.7;
-    }
+    .g1{ left:26px; bottom:10px; transform:rotate(-25deg); }
+    .g2{ left:78px; bottom:4px; transform:rotate(15deg); }
+    .g3{ left:116px; bottom:16px; transform:rotate(-12deg); }
+    .g4{ right:52px; bottom:6px; transform:rotate(30deg); }
+    .g5{ right:20px; bottom:14px; transform:rotate(-18deg); }
 
     .footer{
-      margin-top:14px;
+      margin-top:8px;
       color:rgba(255,255,255,.62);
-      font-size:.92rem;
+      font-size:.94rem;
       letter-spacing:.03em;
     }
 
@@ -273,43 +252,93 @@
       }
 
       .scene{
-        height:380px;
+        height:390px;
       }
 
-      .flower{
+      .rose-wrap{
         transform:scale(.92);
       }
     }
   </style>
 </head>
 <body>
-  <div class="bg-particles" id="bgParticles"></div>
+  <div class="particles" id="particles"></div>
 
   <main class="container">
     <h1>Adiós mi niña</h1>
-    <p class="subtitle">cuidate mucho, te recordare siempre...</p>
-
+    <p class="subtitle">Como una rosa triste... inclinándose antes de despedirse.</p>
     <div class="line"></div>
 
     <section class="scene">
-      <div class="flower">
-        <div class="stem"></div>
-        <div class="leaf left"></div>
-        <div class="leaf right"></div>
+      <div class="rose-wrap">
+        <svg class="rose-svg" viewBox="0 0 260 360" xmlns="http://www.w3.org/2000/svg" aria-label="Rosa agachada">
+          <!-- tallo -->
+          <path d="M130 320
+                   C128 290, 124 250, 130 220
+                   C137 185, 170 170, 190 145"
+                fill="none"
+                stroke="url(#stemGrad)"
+                stroke-width="8"
+                stroke-linecap="round"/>
 
-        <div class="head">
-          <div class="petal p1"></div>
-          <div class="petal p2"></div>
-          <div class="petal p3"></div>
-          <div class="petal p4"></div>
-          <div class="petal p5"></div>
-          <div class="petal p6"></div>
-          <div class="petal p7"></div>
-          <div class="petal p8"></div>
-          <div class="center"></div>
-        </div>
+          <!-- hojas -->
+          <path d="M128 235
+                   C100 214, 78 216, 63 238
+                   C87 245, 108 246, 128 235Z"
+                fill="url(#leafGrad)"/>
 
-        <div class="fallen-petals">
+          <path d="M138 210
+                   C163 194, 186 192, 205 206
+                   C181 220, 158 221, 138 210Z"
+                fill="url(#leafGrad)"/>
+
+          <!-- botón / base rosa -->
+          <g transform="translate(188 132) rotate(62)">
+            <!-- sépalos -->
+            <path d="M-12 18 C-18 10,-18 4,-8 0 C-2 6,-1 13,-12 18Z" fill="#507e59"/>
+            <path d="M0 20 C-4 10,-3 1,7 -1 C10 7,8 15,0 20Z" fill="#5b8d64"/>
+            <path d="M12 17 C9 8,10 1,18 -2 C21 7,19 13,12 17Z" fill="#4f7c58"/>
+
+            <!-- pétalos externos -->
+            <ellipse cx="-18" cy="-10" rx="15" ry="26" fill="var(--rose2)" transform="rotate(-30)"/>
+            <ellipse cx="18" cy="-12" rx="15" ry="27" fill="var(--rose2)" transform="rotate(28)"/>
+            <ellipse cx="0" cy="-20" rx="19" ry="30" fill="var(--rose3)"/>
+
+            <!-- pétalos medios -->
+            <ellipse cx="-8" cy="-12" rx="12" ry="22" fill="var(--rose4)" transform="rotate(-20)"/>
+            <ellipse cx="10" cy="-13" rx="12" ry="21" fill="var(--rose3)" transform="rotate(18)"/>
+
+            <!-- centro -->
+            <path d="M-2 -18
+                     C-8 -10,-7 -1,0 4
+                     C7 -1,7 -10,2 -18
+                     C1 -21,-1 -21,-2 -18Z"
+                  fill="var(--rose1)"/>
+
+            <path d="M-5 -3
+                     C-2 -7,4 -8,8 -2
+                     C5 4,-1 5,-5 -3Z"
+                  fill="var(--rose2)"/>
+          </g>
+
+          <defs>
+            <linearGradient id="stemGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#739b7d"/>
+              <stop offset="100%" stop-color="#33513c"/>
+            </linearGradient>
+
+            <linearGradient id="leafGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#79b486"/>
+              <stop offset="100%" stop-color="#4e7b59"/>
+            </linearGradient>
+          </defs>
+        </svg>
+
+        <div class="petal-fall pf1"></div>
+        <div class="petal-fall pf2"></div>
+        <div class="petal-fall pf3"></div>
+
+        <div class="ground">
           <div class="ground-petal g1"></div>
           <div class="ground-petal g2"></div>
           <div class="ground-petal g3"></div>
@@ -319,24 +348,24 @@
       </div>
     </section>
 
-    <div class="footer">A veces querer también es dejar ir.</div>
+    <div class="footer">A veces el amor también se despide en silencio.</div>
   </main>
 
   <script>
-    const bg = document.getElementById('bgParticles');
+    const particles = document.getElementById('particles');
 
     function createParticle(){
       const p = document.createElement('span');
       p.className = 'particle';
       p.style.left = Math.random() * 100 + 'vw';
       p.style.top = (100 + Math.random() * 20) + 'vh';
-      p.style.opacity = Math.random() * 0.55;
       p.style.animationDuration = (12 + Math.random() * 16) + 's';
       p.style.animationDelay = (Math.random() * 8) + 's';
-      bg.appendChild(p);
+      p.style.opacity = Math.random() * 0.55;
+      particles.appendChild(p);
     }
 
-    for(let i = 0; i < 34; i++){
+    for(let i = 0; i < 36; i++){
       createParticle();
     }
   </script>
